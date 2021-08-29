@@ -1,0 +1,91 @@
+$bar-color: #FFF4E2;
+
+
+.mainBar {
+    background-color: $bar-color;
+    align-items: center;
+    position: fixed;
+    display: flex;
+    height: 60px;
+    width: 100%;
+
+    &__item {
+        margin: 0 12px;
+        flex-shrink: 0;
+    }
+
+    &__searchBar {
+        background-color: rgba(0,0,0,0.05);
+        transition: .5s all ease;
+        align-items: center;
+        border-radius: 8px;
+        max-width: 320px;
+        flex-shrink: 1;
+        display: flex;
+        flex-grow: 1;
+        height: 40px;
+
+        input {
+            background: transparent;
+            outline: 0;
+            border: 0;
+        }
+
+        &--outlined,
+        &:hover {
+            -webkit-box-shadow: 0 0 0 3px rgb(229 160 64 / 12%);
+            box-shadow: 0 0 0 3px rgb(229 160 64 / 12%);
+            background-color: #fff;
+            border-color: #ffddad;
+        }
+    }
+
+    &__searchIcon {
+        fill: rgba(0,0,0,0.65) !important;
+        margin: 0 10px;
+    }
+
+    &__logo {
+        max-height: 50px;
+        max-width: 50px;
+
+        img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+    }
+
+    &__addPostBtn {
+        -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 5%), 0 -1px 0 rgb(0 0 0 / 5%), -1px 0 0 rgb(0 0 0 / 10%), 1px 0 0 rgb(0 0 0 / 10%) !important;
+        box-shadow: 0 1px 1px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 5%), 0 -1px 0 rgb(0 0 0 / 5%), -1px 0 0 rgb(0 0 0 / 10%), 1px 0 0 rgb(0 0 0 / 10%) !important;
+        text-transform: lowercase !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        border-radius: 8px !important;
+        background: #FFF !important;
+        overflow: hidden !important;
+        font-size: 16px !important;
+        color: #000 !important;
+    }
+
+    &__whiteSpace {
+        margin: auto;
+    }
+
+    &__userLogin {
+        font-family: Roboto, Tahoma;
+        align-items: center;
+        font-weight: 500;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+
+        &:hover {
+            color: #E8A427;
+        }
+    }
+}
+
+.avatar {
+    margin: 0 5px;
+}
