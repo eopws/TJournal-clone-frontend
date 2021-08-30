@@ -4,3 +4,13 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 .main-layout-white {
     background: #FFF !important;
 }
+
+.posts-list {
+    &__post {
+        margin: 20px 0;
+
+        &:first-child {
+            margin: 0;
+        }
+    }
+}

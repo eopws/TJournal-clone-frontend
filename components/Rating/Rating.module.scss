@@ -1,0 +1,32 @@
+.ratingWrapper {
+    align-items: center;
+    display: flex;
+}
+
+.ratingValue {
+    font-family: Roboto;
+    user-select: none;
+    font-weight: 500;
+    cursor: default;
+
+    &_positive {
+        color: #2ea83a;
+    }
+
+    &_negative {
+        color: #cd192e;
+    }
+
+    &_neutral {
+        color: #595959;
+    }
+}
+
+.button {
+    font-weight: 400;
+    cursor: pointer;
+
+    &:hover {
+        color: #000;
+    }
+}

@@ -1,10 +1,12 @@
 import type { NextPage } from 'next'
 
-import { MainLayout } from '../components'
+import { MainLayout, Post } from '../components'
 
 const Home: NextPage = () => {
     return (
         <MainLayout>
+            {/* for test purposes */}
+            <Post className="posts-list__post" />
         </MainLayout>
     )
 }
