@@ -4,11 +4,8 @@ import { MainLayout } from '../components'
 
 const Home: NextPage = () => {
     return (
-        <div>
-            <MainLayout>
-                
-            </MainLayout>
-        </div>
+        <MainLayout>
+        </MainLayout>
     )
 }
 

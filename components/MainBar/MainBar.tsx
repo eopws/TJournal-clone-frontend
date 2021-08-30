@@ -26,7 +26,9 @@ const MainBar: FC<MainBarProps> = () => {
 
             <div className={scss.mainBar__item}>
                 <Button variant="contained" className={scss.mainBar__addPostBtn}>
-                    Новая запись
+                    <Link href="/write">
+                        Новая запись
+                    </Link>
                 </Button>
             </div>
 

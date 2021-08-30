@@ -1,0 +1,15 @@
+.headerInput {
+    width: 100%;
+
+    &::after, &::before {
+        display: none !important;
+    }
+
+    font-weight: 500 !important;
+    font-size: 36px !important;
+}
+
+.editor {
+    height: calc(100vh - 200px);
+    margin-bottom: 10px;
+}

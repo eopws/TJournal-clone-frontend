@@ -5,10 +5,11 @@ import Head from 'next/head'
 import scss from "./MainLayout.module.scss"
 
 interface MainLayoutProps {
+    className?: string
     children: ReactChild | ReactNode
 }
 
-const MainLayout: FC<MainLayoutProps> = ({children}) => {
+const MainLayout: FC<MainLayoutProps> = ({children, className = ''}) => {
     return (
         <div>
             <Head>
@@ -20,7 +21,11 @@ const MainLayout: FC<MainLayoutProps> = ({children}) => {
 
             <MainBar />
 
-            {children}
+            <div className={`${scss.content} ${(className)}`}>
+                <div className={`${scss.wrapper}`}>
+                    {children}
+                </div>
+            </div>
         </div>
     )
 }
