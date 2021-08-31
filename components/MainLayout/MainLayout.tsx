@@ -1,5 +1,4 @@
 import React, { FC, ReactChild, ReactNode } from 'react'
-import { MainBar } from '..'
 import Head from 'next/head'
 
 import scss from "./MainLayout.module.scss"
@@ -18,8 +17,6 @@ const MainLayout: FC<MainLayoutProps> = ({children, className = ''}) => {
                 <link rel="icon" href="/favicon.png" />
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700&amp;subset=cyrillic,cyrillic-ext,latin-ext"></link>
             </Head>
-
-            <MainBar />
 
             <div className={`${scss.content} ${(className)}`}>
                 <div className={`${scss.wrapper}`}>
