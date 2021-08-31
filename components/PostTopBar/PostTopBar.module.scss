@@ -1,0 +1,41 @@
+.topBar {
+    font-family: Roboto;
+    align-items: center;
+    display: flex;
+
+    &__item {
+        flex-shrink: 0;
+
+        &_time {
+            color: #595959;
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+        &_spaced {
+            margin-right: 20px;
+        }
+
+        a {
+            cursor: pointer;
+
+            &:hover {
+                color: #346eb8;
+            }
+        }
+    }
+
+    &__spacer {
+        flex-shrink: 1;
+        flex-grow: 1;
+        margin: 0;
+    }
+
+    &__controls {
+        cursor: pointer;
+
+        &:hover {
+            color: #000;
+        }
+    }
+}

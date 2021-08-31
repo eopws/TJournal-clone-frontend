@@ -5,7 +5,7 @@ import { WriteForm } from '@components/pages/write';
 
 const Write: NextPage = () => {
     return (
-        <MainLayout className="main-layout-white">
+        <MainLayout className="main-layout-white main-layout-pt">
             <div>
                 <WriteForm />
             </div>

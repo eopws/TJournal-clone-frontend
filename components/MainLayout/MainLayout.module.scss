@@ -1,11 +1,16 @@
 .content {
+    box-sizing: border-box;
     background: #F2F2F2;
     min-height: 100vh;
 }
 
 .wrapper {
-    padding-top: 80px;
+    padding-top: 60px;
     margin: 0 auto;
     height: 100%;
     width: 640px;
+
+    &_extended {
+        width: 800px;
+    }
 }

@@ -1,0 +1,46 @@
+.footer {
+    margin-top: 15px;
+    display: flex;
+    width: 100%;
+
+    &__item {
+        align-items: center;
+        margin-right: 33px;
+        display: flex;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &Text {
+            color: rgb(89, 89, 89);
+            font-family: Roboto;
+            user-select: none;
+            font-weight: 500;
+            margin-left: 5px;
+            font-size: 16px;
+        }
+
+        &_clickable {
+            cursor: pointer;
+
+            &:hover {
+                .footer__icon {
+                    fill: #346eb8 !important;
+                }
+
+                .footer__itemText {
+                    color: #346eb8 !important;
+                }
+            }
+        }
+    }
+
+    &__icon {
+        fill: rgb(89, 89, 89) !important;
+    }
+
+    &__spacer {
+        margin: auto;
+    }
+}

@@ -4,11 +4,12 @@ import Head from 'next/head';
 import scss from './MainLayout.module.scss';
 
 interface MainLayoutProps {
+    extended?: boolean
     className?: string
     children: ReactChild | ReactNode
 }
 
-const MainLayout: FC<MainLayoutProps> = ({children, className = ''}) => {
+const MainLayout: FC<MainLayoutProps> = ({children, extended = false, className = ''}) => {
     return (
         <div>
             <Head>
@@ -19,7 +20,7 @@ const MainLayout: FC<MainLayoutProps> = ({children, className = ''}) => {
             </Head>
 
             <div className={`${scss.content} ${(className)}`}>
-                <div className={`${scss.wrapper}`}>
+                <div className={`${scss.wrapper} ${extended ? scss.wrapper_extended : ''}`}>
                     {children}
                 </div>
             </div>
