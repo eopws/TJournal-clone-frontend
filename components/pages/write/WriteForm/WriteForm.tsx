@@ -1,10 +1,10 @@
-import React, { FC } from 'react'
-import dynamic from "next/dynamic"
-import { Button, Input } from '@material-ui/core'
+import React, { FC } from 'react';
+import dynamic from 'next/dynamic';
+import { Button, Input } from '@material-ui/core';
 
-import scss from "./WriteForm.module.scss"
+import scss from './WriteForm.module.scss';
 
-const Editor = dynamic(() => import('../../../Editor/Editor'))
+const Editor = dynamic(() => import('@components/Editor/Editor'));
 
 const WriteForm: FC = () => {
     return (

@@ -1,7 +1,7 @@
-import React, { FC, ReactChild, ReactNode } from 'react'
-import Head from 'next/head'
+import React, { FC, ReactChild, ReactNode } from 'react';
+import Head from 'next/head';
 
-import scss from "./MainLayout.module.scss"
+import scss from './MainLayout.module.scss';
 
 interface MainLayoutProps {
     className?: string

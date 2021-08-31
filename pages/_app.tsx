@@ -1,8 +1,8 @@
-import type { AppProps } from 'next/app'
-import { MainBar } from '../components'
+import type { AppProps } from 'next/app';
+import { MainBar } from '@components/index';
 
-import '../styles/globals.scss'
-import '../styles/_variables.css'
+import '@styles/globals.scss';
+import '@styles/_variables.css';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
     return (

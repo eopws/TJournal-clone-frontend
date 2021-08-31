@@ -1,6 +1,6 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
 
-import { MainLayout, Post } from '../components'
+import { MainLayout, Post } from '@components/index';
 
 const Home: NextPage = () => {
     return (

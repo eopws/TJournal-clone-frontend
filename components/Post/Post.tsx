@@ -1,12 +1,12 @@
-import React, { FC } from 'react'
+import React, { FC } from 'react';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import ChatBubbleOutlineRoundedIcon from '@material-ui/icons/ChatBubbleOutlineRounded';
 import RepeatIcon from '@material-ui/icons/Repeat';
 import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutlined';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 
-import scss from './Post.module.scss'
-import { Rating } from '..';
+import scss from './Post.module.scss';
+import { Rating } from '@components/index';
 
 interface PostProps {
     className?: string

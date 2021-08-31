@@ -1,10 +1,10 @@
-import React, { FC } from 'react'
-import Link from 'next/link'
+import React, { FC } from 'react';
+import Link from 'next/link';
 import { SearchOutlined as SearchIcon, AccountCircleOutlined as AccountIcon } from '@material-ui/icons/';
 import { Button } from '@material-ui/core';
 
-import siteLogo from "../../public/site-logo.png"
-import scss from "./MainBar.module.scss"
+import siteLogo from '@public/site-logo.png';
+import scss from './MainBar.module.scss';
 
 interface MainBarProps {}
 

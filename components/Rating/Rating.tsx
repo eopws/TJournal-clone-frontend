@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
-
-import scss from './Rating.module.scss'
+import React, { FC } from 'react';
 import {default as LikeIcon} from '@material-ui/icons/ExpandLessOutlined';
 import {default as DisLikeIcon} from '@material-ui/icons/ExpandMoreOutlined';
+
+import scss from './Rating.module.scss';
 
 interface RatingProps {
     ratingValue: number

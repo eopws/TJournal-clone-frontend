@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
 
-import { MainLayout } from '../components'
-import { WriteForm } from '../components/pages/write'
+import { MainLayout } from '@components/index';
+import { WriteForm } from '@components/pages/write';
 
 const Write: NextPage = () => {
     return (
