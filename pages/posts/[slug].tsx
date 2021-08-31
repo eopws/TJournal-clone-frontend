@@ -1,12 +1,14 @@
 import React from 'react';
 
 import { MainLayout } from '@components/index';
-import {default as PostComponent} from '@components/pages/single-post/Single-Post/SinglePost';
+import { PostComments, SinglePost as PostComponent } from '@components/pages/single-post';
 
 const SinglePost = () => {
     return (
         <MainLayout extended>
             <PostComponent />
+            <br />
+            <PostComments />
         </MainLayout>
     )
 }
