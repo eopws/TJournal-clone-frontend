@@ -3,28 +3,3 @@
         margin-top: 13px;
     }
 }
-
-.sortBlock {
-    &__item {
-        border-radius: 20px;
-        font-family: Roboto;
-        margin-right: 4px;
-        padding: 4px 12px;
-        line-height: 24px;
-        font-size: 16px;
-
-        &:last-child {
-            margin-right: 0;
-        }
-
-        &:not(&_active):hover {
-            background: #FFF;
-            cursor: pointer;
-        }
-
-        &_active {
-            box-shadow: 0px 1px 4px rgb(0 0 0 / 15%);
-            background: #FFF;
-        }
-    }
-}
