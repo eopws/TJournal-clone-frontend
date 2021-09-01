@@ -1,12 +1,16 @@
 import React from 'react';
 
 import { MainLayout } from '@components/index';
-import { Header } from '@components/pages/user-profile';
+import { Header, UserPosts } from '@components/pages/user-profile';
 
 const UserProfile = () => {
     return (
         <MainLayout extended>
             <Header />
+
+            <div className="userProfile__vertical-spacer" />
+
+            <UserPosts />
         </MainLayout>
     )
 }
