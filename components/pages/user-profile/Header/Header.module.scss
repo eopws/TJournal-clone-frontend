@@ -1,0 +1,69 @@
+.headerBlock {
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background: #FFF;
+    padding: 20px;
+
+    &__userNickname {
+        font-family: Roboto;
+        font-weight: 700;
+        margin-top: 10px;
+        font-size: 36px;
+        color: #000;
+    }
+
+    &__changeInfoBtn {
+        font-family: Roboto;
+        color: #346EB8;
+        margin-top: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        display: block;
+
+        &:hover {
+            color: #CD192E;
+        }
+    }
+
+    &__regdate {
+        font-family: Roboto;
+        margin-top: 20px;
+        display: block;
+    }
+
+    &__tabs {
+        margin-top: 25px;
+    }
+}
+
+.tabs {
+    &__item {
+        font-family: Roboto;
+        margin-right: 20px;
+        color: #000;
+
+        &:last-child {
+            margin-right: 20px;
+        }
+
+        &:not(&_active):hover {
+            color: #4683D9;
+            cursor: pointer;
+        }
+
+        &_active {
+            position: relative;
+            font-weight: 500;
+
+            &::after {
+                background-color: #4683D9;
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 3px;
+                bottom: -20px;
+                left: 0;
+            }
+        }
+    }
+}
