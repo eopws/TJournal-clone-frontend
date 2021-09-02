@@ -4,8 +4,6 @@
 
     &__list {
         padding: 10px 0;
-        margin: 0 auto;
-        width: 600px;
     }
 
     &__count {
@@ -14,8 +12,6 @@
         font-weight: 700;
         font-size: 18px;
         display: block;
-        margin: 0 auto;
-        width: 600px;
     }
 
     &__controls {
@@ -24,9 +20,7 @@
 
         &Wrapper {
             justify-content: space-between;
-            margin: 0 auto;
             display: flex;
-            width: 600px;
         }
     }
 }

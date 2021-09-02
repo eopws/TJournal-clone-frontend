@@ -5,13 +5,14 @@ import NotificationsOutlinedIcon from '@material-ui/icons/NotificationsOutlined'
 import {default as DisLikeIcon} from '@material-ui/icons/ExpandMoreOutlined';
 import {default as LikeIcon} from '@material-ui/icons/ExpandLessOutlined';
 import scss from './PostComments.module.scss';
+import { AddCommentForm } from '@components/pages/single-post/index';
 
 const PostComments = () => {
     return (
         <div className={scss.comments}>
-            <span className={scss.comments__count}>228 комментариев</span>
+            <span className={`${scss.comments__count} container`}>228 комментариев</span>
 
-            <div className={scss.comments__controls}>
+            <div className={`${scss.comments__controls} container`}>
                 <div className={scss.comments__controlsWrapper}>
                     <div className={scss.tabs}>
                         <span className={`${scss.tabs__item} ${scss.tabs__item_active}`}>Популярные</span>
@@ -23,7 +24,11 @@ const PostComments = () => {
                 </div>
             </div>
 
-            <div className={scss.comments__list}>
+            <div className="container">
+                <AddCommentForm />
+            </div>
+
+            <div className={`${scss.comments__list} container`}>
                 <div className={scss.comment}>
                     <div className={scss.comment__content}>
                         <div className={scss.comment__topBar}>
