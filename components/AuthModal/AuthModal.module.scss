@@ -1,0 +1,189 @@
+.modalContentWrapper {
+    padding: 0 !important;
+    display: flex;
+}
+
+.modalCover {
+    background: url("https://leonardo.osnova.io/b6bd61b5-eb5b-34db-8501-2fcc54cd051b/-/format/webp/") center center no-repeat;
+    background-size: contain;
+    box-sizing: border-box;
+    position: relative;
+    height: 556px;
+    width: 260px;
+    flex: 1 1 50%;
+
+    &__siteLogo {
+        position: absolute;
+        left: 25px;
+        top: 25px;
+
+        svg {
+            height: 35px;
+            width: 35px;
+        }
+    }
+}
+
+.modalContent {
+    justify-content: center;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 30px;
+    flex: 1 1 50%;
+    display: flex;
+
+    &__backButton {
+        font-family: Roboto;
+        align-items: center;
+        position: absolute;
+        font-size: 16px;
+        display: flex;
+        left: 24px;
+        top: 16px;
+
+        svg {
+            height: 20px;
+            width: 20px;
+        }
+
+        &:hover {
+            color: #346EB8;
+            cursor: pointer;
+
+            svg {
+                fill: #346EB8;
+            }
+        }
+    }
+
+    &__modalTitle {
+        font-family: Roboto;
+        line-height: 25px;
+        text-align: left;
+        font-weight: 500;
+        font-size: 18px;
+        width: 100%;
+
+        &_small {
+            font-weight: 400;
+            font-size: 15px;
+            display: block;
+        }
+    }
+
+    &__main {
+        margin-top: 18px;
+        width: 100%;
+    }
+
+    &__mainSecondary {
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        width: 100%;
+
+        .modalContent__item {
+            margin-bottom: 0 !important;
+        }
+
+        svg {
+            position: static !important;
+            transform: none !important;
+        }
+    }
+
+    &__secondaryCenter {
+        margin-right: 10px !important;
+        margin-left: 10px !important;
+    }
+
+    &__item {
+        box-shadow: 0 1px 2px rgb(0 0 0 / 8%), inset 0 0 0 1px rgb(0 0 0 / 6%), inset 0 -1px 0 rgb(0 0 0 / 12%), inset 1px 0 0 rgb(0 0 0 / 6%), inset -1px 0 0 rgb(0 0 0 / 6%) !important;
+        text-transform: none !important;
+        margin-bottom: 16px !important;
+        background: #FFF !important;
+        font-weight: 500 !important;
+        font-size: 16px !important;
+        color: #000 !important;
+        position: relative;
+
+        svg {
+            transform: translateY(-50%);
+            position: absolute;
+            height: 24px;
+            width: 24px;
+            left: 10px;
+            top: 50%;
+        }
+    }
+
+    &__loginButton {
+        background: #4683D9 !important;
+        text-transform: none !important;
+        padding-right: 10px !important;
+        padding-left: 10px !important;
+        font-weight: 500 !important;
+        font-size: 16px !important;
+        color: #FFF !important;
+
+        &:hover {
+            background-color: #437CCE !important;
+        }
+
+        &_disabled {
+            pointer-events: none;
+            cursor: default;
+            opacity: .5;
+        }
+    }
+
+    &__restorePasswordButton {
+        border-bottom: 1px dotted rgba(89, 89, 89, .5);
+        font-family: Roboto;
+        color: #595959;
+        cursor: pointer;
+        font-size: 13px;
+
+        &:hover {
+            border-bottom: 1px dotted rgba(255, 0, 0, .5);
+            color: #CD192E;
+        }
+    }
+
+    &__privacyMessage {
+        border-top: 1px solid #F0F0F0;
+        font-family: Roboto;
+        position: absolute;
+        padding: 20px 30px;
+        line-height: 18px;
+        color: #595959;
+        font-size: 12px;
+        bottom: 1px;
+        right: 0;
+        left: 0;
+    }
+}
+
+.link {
+    color: #4683D9;
+    cursor: pointer;
+
+    &:hover {
+        color: #CD192E;
+    }
+}
+
+.closeModalButton {
+    position: absolute;
+    cursor: pointer;
+    color: #000;
+    opacity: .5;
+    right: 10px;
+    top: 10px;
+
+    &:hover {
+        opacity: 1;
+    }
+}
