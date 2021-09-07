@@ -1,5 +1,9 @@
 import React, { FC } from 'react';
-import { Button, TextField } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import FormField from './FormField';
+import { FormProvider, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { RestorePasswordFormSchema } from '@utils/yupSchemas/';
 
 interface AuthModal__restorePasswordProps {
     scss: {
@@ -8,18 +12,33 @@ interface AuthModal__restorePasswordProps {
 }
 
 const AuthModal__restorePassword: FC<AuthModal__restorePasswordProps> = ({scss}) => {
-    return (
-        <>
-            <div className={scss.modalContent__main}>
-                <TextField size="small" classes={{root: scss.modalContent__item}} label="Почта" variant="outlined" fullWidth />
-            </div>
+    const form = useForm({
+        mode: 'onChange',
+        resolver: yupResolver(RestorePasswordFormSchema)
+    });
 
-            <div className={scss.modalContent__mainSecondary}>
-                <Button classes={{root: `${scss.modalContent__loginButton} ${scss.modalContent__loginButton_disabled}`}}>
-                    Восстановить пароль
-                </Button>
-            </div>
-        </>
+    const onSubmit = (data: any): void => console.log(data);
+
+    return (
+        <FormProvider {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+                <div className={scss.modalContent__main}>
+                    <FormField name="email" label="Почта" />
+                </div>
+
+                <div className={scss.modalContent__mainSecondary}>
+                    <Button
+                        type="submit"
+                        classes={{
+                            root: scss.modalContent__loginButton
+                                  + (form.formState.isValid ? '' : ' ' + scss.modalContent__loginButton_disabled)
+                        }}
+                    >
+                        Восстановить пароль
+                    </Button>
+                </div>
+            </form>
+        </FormProvider>
     )
 }
 
