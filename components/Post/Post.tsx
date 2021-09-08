@@ -15,7 +15,7 @@ const Post: FC<PostProps> = ({ post, className = "" }) => {
 
     return (
         <div className={`${scss.post} ${className}`}>
-            <Link href="/posts/post-slug">
+            <Link href={'/posts/' + post.slug}>
                 <a>
                     <PostTopBar
                         author={post.author.nickname}

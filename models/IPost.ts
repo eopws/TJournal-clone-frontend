@@ -6,5 +6,6 @@ export default interface IPost {
     readonly header: string
     readonly content: string
     readonly createdAt: string
+    readonly slug: string
     readonly isDraft: boolean
 }
