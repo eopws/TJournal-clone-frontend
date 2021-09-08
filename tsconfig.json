@@ -15,9 +15,11 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
+      "@api/*": ["api/*"],
       "@components/*": ["components/*"],
       "@public/*": ["public/*"],
       "@styles/*": ["styles/*"],
+      "@models/*": ["models/*"],
       "@utils/*": ["utils/*"]
     }
   },
