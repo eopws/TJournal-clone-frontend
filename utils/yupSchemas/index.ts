@@ -6,7 +6,7 @@ export const LoginFormSchema = yup.object().shape({
 });
 
 export const RegistrationFormSchema = yup.object().shape({
-    fullname: yup.string().required('Имя и фамилия обязательны')
+    nickname: yup.string().required('Псевдоним обязателен')
 }).concat(LoginFormSchema);
 
 export const RestorePasswordFormSchema = yup.object().shape({

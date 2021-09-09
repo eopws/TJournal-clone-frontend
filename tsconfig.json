@@ -19,6 +19,7 @@
       "@components/*": ["components/*"],
       "@public/*": ["public/*"],
       "@styles/*": ["styles/*"],
+      "@store/*": ["store/*"],
       "@models/*": ["models/*"],
       "@utils/*": ["utils/*"]
     }

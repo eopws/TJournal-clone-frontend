@@ -11,8 +11,11 @@ $bar-color: #FFF4E2;
     width: 100%;
 
     &__item {
+        font-family: Roboto, Tahoma;
+        align-items: center;
         margin: 0 12px;
         flex-shrink: 0;
+        display: flex;
     }
 
     &__searchBar {
@@ -83,6 +86,28 @@ $bar-color: #FFF4E2;
 
         &:hover {
             color: #E8A427;
+        }
+    }
+
+    &__userProfile {
+        img {
+            margin-right: 10px;
+            border-radius: 7px;
+            cursor: pointer;
+            height: 40px;
+            width: 40px;
+
+            &:hover {
+                opacity: .6;
+            }
+        }
+    }
+
+    &__expandArrow {
+        cursor: pointer;
+
+        &:hover {
+            opacity: .6;
         }
     }
 }

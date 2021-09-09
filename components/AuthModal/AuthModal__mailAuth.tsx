@@ -5,21 +5,28 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { LoginFormSchema } from '@utils/yupSchemas/';
 
 import FormField from './FormField';
+import { useActions } from 'hooks/useActions';
 
 interface AuthModal__mailAuthProps {
     scss: {
         readonly [key: string]: string
     }
+    authDoneHandler: () => void
     restorePasswordClickHandler: () => void
 }
 
-const AuthModal__mailAuth: FC<AuthModal__mailAuthProps> = ({scss, restorePasswordClickHandler}) => {
+const AuthModal__mailAuth: FC<AuthModal__mailAuthProps> = ({scss, authDoneHandler, restorePasswordClickHandler}) => {
+    const reduxActions = useActions();
+
     const form = useForm({
         mode: 'onChange',
         resolver: yupResolver(LoginFormSchema)
     });
 
-    const onSubmit = (data: any): void => console.log(data);
+    const onSubmit = (data: any): void => {
+        reduxActions.login(data.email, data.password);
+        authDoneHandler();
+    };
 
     return (
         <FormProvider {...form}>

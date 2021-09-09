@@ -24,7 +24,7 @@ const AuthModal__register: FC<AuthModal__registerProps> = ({scss}) => {
         <FormProvider {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
                 <div className={scss.modalContent__main}>
-                    <FormField name="fullname" label="Имя и фамилия" />
+                    <FormField name="nickname" label="псевдоним" />
                     <FormField name="email" label="Почта" />
                     <FormField name="password" label="Пароль" />
                 </div>

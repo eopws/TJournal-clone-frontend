@@ -178,6 +178,7 @@ const AuthModal: FC<AuthModalProps> = ({open, AuthModalClosePropHandler}) => {
                     {authType === AuthTypeEnum.mailAuth &&
                         <AuthModal__mailAuth
                             scss={scss}
+                            authDoneHandler={AuthModalCloseHandler}
                             restorePasswordClickHandler={restorePasswordClickHandler}
                         />
                     }

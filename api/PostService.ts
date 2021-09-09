@@ -1,13 +1,14 @@
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from 'axios';
 
-import IPost from "@models/IPost";
+import $api from './axios';
+import IPost from '@models/IPost';
 
 export default class PostService {
     static async getAll(): Promise<AxiosResponse<IPost[]>> {
-        return axios.get<IPost[]>('http://localhost:3001/posts');
+        return $api.get<IPost[]>('posts/');
     }
 
-    static async getOne(slug: string) {
-        return axios.get<IPost>('http://localhost:3001/posts/' + slug);
+    static async getOne(slug: string): Promise<AxiosResponse<IPost>> {
+        return $api.get<IPost>('posts/' + slug);
     }
 }
