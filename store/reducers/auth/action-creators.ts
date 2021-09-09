@@ -13,6 +13,7 @@ export const AuthActionCreators = {
 
             localStorage.setItem('auth', 'true');
             localStorage.setItem('token', accessToken);
+            localStorage.setItem('user', JSON.stringify(user));
 
             dispatch(AuthActionCreators.setIsAuth(true));
             dispatch(AuthActionCreators.setUser(user));

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { SearchOutlined as SearchIcon, AccountCircleOutlined as AccountIcon } from '@material-ui/icons/';
 import { Button } from '@material-ui/core';
@@ -14,7 +14,18 @@ interface MainBarProps {}
 const MainBar: FC<MainBarProps> = () => {
     const { user, isAuth } = useTypedSelector(state => state.auth);
 
-    const [authModalOpen, setAuthModalOpen] = useState<boolean>(true);
+    const [authModalOpen, setAuthModalOpen] = useState<boolean>(false);
+
+    useEffect(() => {
+        setAuthModalOpen(!Boolean(localStorage.getItem('auth')));
+    }, []);
+
+    useEffect(() => {
+        // prevent from an authorized user opening an authentication window
+        if (Boolean(localStorage.getItem('auth'))) {
+            setAuthModalOpen(false);
+        }
+    }, [authModalOpen]);
 
     const loginButtonClickHandler = (): void => {
         setAuthModalOpen(true);
