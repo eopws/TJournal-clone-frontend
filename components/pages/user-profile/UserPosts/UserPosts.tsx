@@ -6,16 +6,11 @@ import { SortBar } from '@components/pages/user-profile/index';
 import { IPost } from '@models/index';
 import scss from './UserPosts.module.scss';
 
-const UserPosts: FC = () => {
-    const [posts, setPosts] = useState<IPost[]>([]);
+interface UserPostsProps {
+    posts: IPost[]
+}
 
-    useEffect(() => {
-        PostService.getAll()
-            .then((response) => {
-                setPosts(response.data);
-            });
-    }, []);
-
+const UserPosts: FC<UserPostsProps> = ({ posts }) => {
     return (
         <div className={scss.userPosts}>
             <SortBar />
