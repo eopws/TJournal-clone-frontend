@@ -29,6 +29,10 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 }
 
 .loader {
+    transform: translateX(-50%);
+    display: inline-block;
     width: fit-content;
+    position: relative;
     margin: 20px auto;
+    left: 50%;
 }

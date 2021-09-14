@@ -1,32 +1,20 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { FC, useState } from 'react';
+import { CircularProgress, Tab, Tabs } from '@material-ui/core';
 import NotificationsOutlinedIcon from '@material-ui/icons/NotificationsOutlined';
-import scss from './PostComments.module.scss';
-import { AddCommentForm, PostComment } from '@components/pages/single-post/index';
-import { Tab, Tabs } from '@material-ui/core';
 
-type Comment = {
-    postId: number
-    id: number
-    name: string
-    email: string
-    body: string
+import { AddCommentForm, PostComment } from '@components/pages/single-post/index';
+import { IComment } from '@models/index';
+import scss from './PostComments.module.scss';
+import formatNumberedLabel from '@utils/formatNumberedLabel';
+
+interface PostCommentsProps {
+    comments: IComment[]
+    areCommentsLoading: boolean
 }
 
-type CommentsState = Comment[] | null;
-
-const PostComments = () => {
-    const [comments, setComments] = useState<CommentsState>(null);
+const PostComments: FC<PostCommentsProps> = ({ comments, areCommentsLoading }) => {
     const [activeTab, setActiveTab] = useState(0);
     const [sortMethod, setSortMethod] = useState('name');
-
-    useEffect(() => {
-        const sortQuery = sortMethod ? '&_sort=' + sortMethod : '';
-
-        fetch('https://jsonplaceholder.typicode.com/comments?_limit=20' + sortQuery)
-            .then(response => response.json())
-            .then(json => setComments(json))
-    }, [sortMethod])
 
     const tabsChangeHandler = (_: any, newValue: number) => {
         setActiveTab(newValue);
@@ -42,20 +30,45 @@ const PostComments = () => {
         }
     }
 
+    let commentsLabel = '';
+
+    if (comments.length === 0) {
+        commentsLabel = 'Нет комментариев'
+    } else {
+        commentsLabel = formatNumberedLabel(comments.length, ['комментарий', 'комментария', 'комментариев'])
+    }
+
+    if (areCommentsLoading) {
+        return (
+            <div className={scss.comments}>
+                <div className='container'>
+                    <div className="loader">
+                        <CircularProgress size={100} />
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div className={scss.comments}>
-            <span className={`${scss.comments__count} container`}>228 комментариев</span>
+            <span className={`${scss.comments__count} container`}>{commentsLabel}</span>
 
             <div className={`${scss.comments__controls} container`}>
                 <div className={scss.comments__controlsWrapper}>
-                    <Tabs
-                        value={activeTab}
-                        indicatorColor="primary"
-                        onChange={tabsChangeHandler}
-                    >
-                        <Tab label="Популярные" />
-                        <Tab label="По порядку" />
-                    </Tabs>
+                    {comments.length ?
+                        <Tabs
+                            value={activeTab}
+                            indicatorColor="primary"
+                            onChange={tabsChangeHandler}
+                        >
+                            <Tab label="Популярные" />
+                            <Tab label="По порядку" />
+                        </Tabs>
+                        :
+                        // empty symbol to move notifications to the right
+                        <>&nbsp;</>
+                    }
                     <div className={scss.comments__subscribeBtn}>
                         <NotificationsOutlinedIcon />
                     </div>
@@ -67,8 +80,8 @@ const PostComments = () => {
             </div>
 
             <div className={`${scss.comments__list} container`}>
-                {comments !== null && comments.map((comment: Comment) =>
-                    <PostComment key={comment.id} comment={comment} />
+                {comments !== null && comments.map((comment) =>
+                    <PostComment key={+comment.createdAt} comment={comment} />
                 )}
             </div>
         </div>

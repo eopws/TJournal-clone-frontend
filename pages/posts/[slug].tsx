@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import { NextPage } from 'next';
 
-import { PostService } from '@api/index';
+import { PostService, CommentService } from '@api/index';
 import { MainLayout } from '@components/index';
+import { IComment, IPost } from '@models/index';
 import { PostComments, SinglePost as PostSection } from '@components/pages/single-post';
-import { IPost } from '@models/index';
 
 const SinglePost: NextPage = () => {
-    const [post, setPost] = useState<IPost>();
+    const [post, setPost]         = useState<IPost>();
+    const [comments, setComments] = useState<IComment[]>([]);
+
+    const [areCommentsLoading, setAreCommentsLoading] = useState<boolean>(true);
 
     const router = useRouter();
     const slug = router.query.slug;
@@ -22,6 +25,18 @@ const SinglePost: NextPage = () => {
             }
     }, [slug]);
 
+    useEffect(() => {
+        if (typeof slug === 'string' && post) {
+            CommentService.getAll({ post: post._id })
+                .then((response) => {
+                    setComments(response.data);
+                })
+                .finally(() => {
+                    setAreCommentsLoading(false);
+                });
+        }
+    }, [slug, post]);
+
     return (
         <>
             {post != null ?
@@ -30,7 +45,10 @@ const SinglePost: NextPage = () => {
                         post={post}
                     />
                     <br />
-                    <PostComments />
+                    <PostComments
+                        areCommentsLoading={areCommentsLoading}
+                        comments={comments}
+                    />
                 </MainLayout>
                 :
                 'Loading'
