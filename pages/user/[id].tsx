@@ -12,6 +12,8 @@ const UserProfile = () => {
     const [posts, setPosts] = useState<IPost[]>([]);
     const [comments, setComments] = useState<IComment[]>([]);
 
+    const [ activeTab, setActiveTab ] = useState<'Posts' | 'Comments'>('Posts');
+
     const router = useRouter();
     const id = router.query.id;
 
@@ -42,11 +44,25 @@ const UserProfile = () => {
         }
     }, [id]);
 
+    let PageContent;
+
+    switch (activeTab) {
+        case 'Posts':
+            PageContent = <UserPosts posts={posts} />
+            break;
+
+        case 'Comments':
+            PageContent = <UserComments comments={comments} />
+            break;
+    }
+
     return (
         <MainLayout extended>
             {user ?
                 <Header
                     user={user}
+                    activeTab={activeTab}
+                    setActiveTab={setActiveTab}
                 />
                 :
                 <div className="container">
@@ -58,12 +74,7 @@ const UserProfile = () => {
 
             <div className="userProfile__vertical-spacer" />
 
-            {/*<UserPosts
-                posts={posts}
-            />*/}
-            <UserComments
-                comments={comments}
-            />
+            {PageContent}
         </MainLayout>
     )
 }

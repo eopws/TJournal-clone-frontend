@@ -5,15 +5,23 @@ import scss from './Header.module.scss';
 
 interface HeaderProps {
     user: IUser
+    activeTab: 'Posts' | 'Comments'
+    setActiveTab: (newTab: any) => void
 }
 
-const Header: FC<HeaderProps> = ({ user }) => {
+const Header: FC<HeaderProps> = ({ user, activeTab, setActiveTab }) => {
     const registeredAt = new Date(user.createdAt);
 
     const monthNames = [
         "янв", "фев", "мар", "апр", "май", "июнь",
         "июль", "авг", "сен", "окт", "ноя", "дек"
     ];
+
+    const tabs = {
+        'Posts': 'Статьи',
+        'Comments': 'Комментарии',
+        'Drafts': 'Черновики'
+    };
 
     return (
         <div className={scss.headerBlock}>
@@ -34,9 +42,22 @@ const Header: FC<HeaderProps> = ({ user }) => {
                 </div>
 
                 <div className={`${scss.headerBlock__tabs} ${scss.tabs}`}>
-                    <span className={`${scss.tabs__item} ${scss.tabs__item_active}`}>Статьи</span>
-                    <span className={scss.tabs__item}>Комментарии</span>
-                    <span className={scss.tabs__item}>Черновики 5</span>
+                    {Object.keys(tabs).map((tabId) => {
+                        let className = scss.tabs__item;
+
+                        if (tabId === activeTab) {
+                            className += ' ' + scss.tabs__item_active;
+                        }
+
+                        return (
+                            <span
+                                className={className}
+                                onClick={() => setActiveTab(tabId)}
+                            >
+                                {tabs[tabId]}
+                            </span>
+                        )
+                    })}
                 </div>
             </div>
         </div>
