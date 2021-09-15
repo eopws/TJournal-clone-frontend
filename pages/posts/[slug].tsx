@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import { NextPage } from 'next';
 
@@ -37,6 +37,15 @@ const SinglePost: NextPage = () => {
         }
     }, [slug, post]);
 
+    const addCommentFormSubmitHandler = useCallback((newComment: any) => {
+        if (post) {
+            CommentService.create({
+                post: post._id,
+                content: newComment.content
+            });
+        }
+    }, [post]);
+
     return (
         <>
             {post != null ?
@@ -48,6 +57,7 @@ const SinglePost: NextPage = () => {
                     <PostComments
                         areCommentsLoading={areCommentsLoading}
                         comments={comments}
+                        addCommentFormSubmitHandler={addCommentFormSubmitHandler}
                     />
                 </MainLayout>
                 :

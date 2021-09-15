@@ -12,3 +12,7 @@ export const RegistrationFormSchema = yup.object().shape({
 export const RestorePasswordFormSchema = yup.object().shape({
     email: yup.string().email('Неверная почта').required('Почта обязательна'),
 });
+
+export const AddCommentFormSchema = yup.object().shape({
+    content: yup.string().min(10, 'Слишком короткий комментарий').max(400, 'Слишком длинный комментарий').required('Текст комментария обязателен')
+});

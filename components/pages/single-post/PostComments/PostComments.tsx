@@ -10,9 +10,10 @@ import formatNumberedLabel from '@utils/formatNumberedLabel';
 interface PostCommentsProps {
     comments: IComment[]
     areCommentsLoading: boolean
+    addCommentFormSubmitHandler: (data: any) => void
 }
 
-const PostComments: FC<PostCommentsProps> = ({ comments, areCommentsLoading }) => {
+const PostComments: FC<PostCommentsProps> = ({ comments, areCommentsLoading, addCommentFormSubmitHandler }) => {
     const [activeTab, setActiveTab] = useState(0);
     const [sortMethod, setSortMethod] = useState('name');
 
@@ -76,7 +77,9 @@ const PostComments: FC<PostCommentsProps> = ({ comments, areCommentsLoading }) =
             </div>
 
             <div className="container">
-                <AddCommentForm />
+                <AddCommentForm
+                    formSubmitHandler={addCommentFormSubmitHandler}
+                />
             </div>
 
             <div className={`${scss.comments__list} container`}>

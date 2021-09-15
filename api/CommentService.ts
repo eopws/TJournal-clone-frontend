@@ -1,10 +1,15 @@
 import { AxiosResponse } from 'axios';
 
 import $api from './axios';
-import { IGetAll } from '@models/CommentServiceQueries';
+import { CreateCommentDto, IGetAll } from '@models/CommentServiceQueries';
 import { IComment } from '@models/index';
 
 export default class CommentService {
+    static async create(createCommentDto: CreateCommentDto) {
+        console.log(createCommentDto);
+        return $api.post<IComment>('comments', createCommentDto);
+    }
+
     static async getAll(query?: IGetAll): Promise<AxiosResponse<IComment[]>> {
         let queryString: string = '?';
 
