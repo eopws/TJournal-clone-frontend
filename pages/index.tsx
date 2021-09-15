@@ -7,11 +7,17 @@ import { PostService } from '@api/index';
 
 const Home: NextPage = () => {
     const [posts, setPosts] = useState<IPost[]>([]);
+    const [arePostsFetching, setArePostsFetching] = useState<boolean>(false);
 
     useEffect(() => {
+        setArePostsFetching(true);
+
         PostService.getAll()
             .then((response) => {
                 setPosts(response.data);
+            })
+            .finally(() => {
+                setArePostsFetching(false);
             });
     }, []);
 
@@ -19,6 +25,7 @@ const Home: NextPage = () => {
         <MainLayout className="main-layout-pt">
             <PostsList
                 posts={posts}
+                arePostsFetching={arePostsFetching}
             />
         </MainLayout>
     )
