@@ -5,7 +5,7 @@ import IPost from '@models/IPost';
 import { IGetAll } from '@models/PostServiceQueries';
 
 export default class PostService {
-    static async getAll(query: IGetAll): Promise<AxiosResponse<IPost[]>> {
+    static async getAll(query?: IGetAll): Promise<AxiosResponse<IPost[]>> {
         let queryString: string = '?';
 
         for (let key in query) {
