@@ -16,6 +16,12 @@ const SinglePost: NextPage = () => {
     const router = useRouter();
     const slug = router.query.slug;
 
+    const fetchComments = async (postId: string) => {
+        const response = await CommentService.getAll({ post: postId });
+
+        setComments(response.data);
+    };
+
     useEffect(() => {
         if (typeof slug === 'string') {
             PostService.getOne(slug)
@@ -27,22 +33,24 @@ const SinglePost: NextPage = () => {
 
     useEffect(() => {
         if (typeof slug === 'string' && post) {
-            CommentService.getAll({ post: post._id })
-                .then((response) => {
-                    setComments(response.data);
-                })
+            setAreCommentsLoading(true);
+
+            fetchComments(post._id)
                 .finally(() => {
                     setAreCommentsLoading(false);
                 });
         }
     }, [slug, post]);
 
-    const addCommentFormSubmitHandler = useCallback((newComment: any) => {
+    const addCommentFormSubmitHandler = useCallback(async (newComment: any) => {
         if (post) {
-            CommentService.create({
+            await CommentService.create({
                 post: post._id,
                 content: newComment.content
             });
+
+            // update comments list
+            fetchComments(post._id);
         }
     }, [post]);
 
