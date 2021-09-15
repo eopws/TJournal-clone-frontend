@@ -1,0 +1,94 @@
+.comment {
+    background: #FFF;
+    border-radius: 8px;
+    padding: 20px;
+
+    &__topBar {
+        justify-content: space-between;
+        font-family: Roboto;
+        display: flex;
+    }
+
+    &__author {
+        &Avatar {
+            border-radius: 2px;
+            margin-right: 8px;
+            height: 16px;
+            width: 16px;
+        }
+
+        &Nickname {
+            margin-right: 8px;
+            font-weight: 500;
+            font-size: 13px;
+        }
+    }
+
+    &__time {
+        color: #595959;
+        font-weight: 400;
+        font-size: 12px;
+    }
+
+    &__text {
+        font-family: Roboto;
+        line-height: 24px;
+        margin-top: 10px;
+        font-size: 15px;
+        color: #000;
+    }
+
+    &__footer {
+        margin-top: 10px;
+    }
+
+    &__children {
+        border-left: 1px solid rgba(0, 0, 0, .1);
+        padding-left: 16px;
+        padding-top: 5px;
+        margin-top: 10px;
+    }
+}
+
+.commentFooter {
+    align-items: center;
+    display: flex;
+
+    &__item {
+        font-family: Roboto;
+        margin-right: 10px;
+        color: #595959;
+        font-size: 14px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &_clickable {
+            cursor: pointer;
+
+            &:hover {
+                color: #346EB8;
+            }
+        }
+    }
+}
+
+.rating {
+    &__value {
+        border-radius: 2px;
+        padding: 2px 16px;
+        font-weight: 500;
+        font-size: 14px;
+
+        &_neutral {
+            background: rgba(89, 89, 89, .08);
+            color: #595959;
+        }
+
+        &_positive {
+            background: rgba(46, 168, 58, .08);
+            color: #2EA83A;
+        }
+    }
+}

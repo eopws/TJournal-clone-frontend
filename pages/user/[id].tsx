@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import { CircularProgress } from '@material-ui/core';
 
-import { PostService, UserService } from '@api/index';
+import { CommentService, PostService, UserService } from '@api/index';
 import { MainLayout } from '@components/index';
-import { Header, UserPosts } from '@components/pages/user-profile';
-import { IPost, IUser } from '@models/index';
+import { Header, UserComments, UserPosts } from '@components/pages/user-profile';
+import { IComment, IPost, IUser } from '@models/index';
 
 const UserProfile = () => {
     const [user, setUser]   = useState<IUser>();
     const [posts, setPosts] = useState<IPost[]>([]);
+    const [comments, setComments] = useState<IComment[]>([]);
 
     const router = useRouter();
     const id = router.query.id;
@@ -32,6 +33,15 @@ const UserProfile = () => {
         }
     }, [id]);
 
+    useEffect(() => {
+        if (typeof id === 'string') {
+            CommentService.getAll({ author: id })
+                .then((response) => {
+                    setComments(response.data);
+                });
+        }
+    }, [id]);
+
     return (
         <MainLayout extended>
             {user ?
@@ -48,8 +58,11 @@ const UserProfile = () => {
 
             <div className="userProfile__vertical-spacer" />
 
-            <UserPosts
+            {/*<UserPosts
                 posts={posts}
+            />*/}
+            <UserComments
+                comments={comments}
             />
         </MainLayout>
     )
