@@ -25,7 +25,9 @@ const SinglePost: FC<SinglePostProps> = ({ post }) => {
                     </p>
                 </div>
 
-                <PostFooter />
+                <PostFooter
+                    post={post}
+                />
 
                 <div className={scss.post__author}>
                     <img src="https://leonardo.osnova.io/63b48b34-c9f4-9265-1711-455e451a6b82/-/scale_crop/108x108/-/format/webp/" alt="" />
