@@ -6,6 +6,7 @@ export default interface IPost {
     readonly header: string
     readonly content: string
     readonly createdAt: string
+    readonly likes: number
     readonly slug: string
     readonly isDraft: boolean
 }
