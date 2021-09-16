@@ -39,7 +39,9 @@ const Post: FC<PostProps> = ({ post, className = "" }) => {
                         </div>
                     </div>
 
-                    <PostFooter />
+                    <PostFooter
+                        post={post}
+                    />
                 </a>
             </Link>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import scss from './PostFooter.module.scss';
 import ChatBubbleOutlineRoundedIcon from '@material-ui/icons/ChatBubbleOutlineRounded';
@@ -6,8 +6,13 @@ import RepeatIcon from '@material-ui/icons/Repeat';
 import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutlined';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import { Rating } from '@components/index';
+import { IPost } from '@models/index';
 
-const PostFooter = () => {
+interface PostFooterProps {
+    post: IPost
+}
+
+const PostFooter: FC<PostFooterProps> = ({ post }) => {
     return (
         <div className={scss.footer}>
             <div className={`${scss.footer__item} ${scss.footer__item_clickable}`}>
@@ -27,7 +32,7 @@ const PostFooter = () => {
             <div className={scss.footer__spacer}></div>
 
             <div className={scss.footer__item}>
-                <Rating ratingValue={5} />
+                <Rating ratingValue={post.likes} />
             </div>
         </div>
     )
