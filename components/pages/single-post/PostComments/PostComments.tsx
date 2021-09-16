@@ -3,30 +3,30 @@ import { CircularProgress, Tab, Tabs } from '@material-ui/core';
 import NotificationsOutlinedIcon from '@material-ui/icons/NotificationsOutlined';
 
 import { AddCommentForm, PostComment } from '@components/pages/single-post/index';
-import { IComment } from '@models/index';
+import { IComment, SortTypesEnum } from '@models/index';
 import scss from './PostComments.module.scss';
 import formatNumberedLabel from '@utils/formatNumberedLabel';
 
 interface PostCommentsProps {
     comments: IComment[]
     areCommentsLoading: boolean
+    setSortType: (sort: SortTypesEnum) => void
     addCommentFormSubmitHandler: (data: any) => void
 }
 
-const PostComments: FC<PostCommentsProps> = ({ comments, areCommentsLoading, addCommentFormSubmitHandler }) => {
+const PostComments: FC<PostCommentsProps> = ({ comments, areCommentsLoading, setSortType, addCommentFormSubmitHandler }) => {
     const [activeTab, setActiveTab] = useState(0);
-    const [sortMethod, setSortMethod] = useState('name');
 
     const tabsChangeHandler = (_: any, newValue: number) => {
         setActiveTab(newValue);
 
         switch (newValue) {
             case 0:
-                setSortMethod('name');
+                setSortType(SortTypesEnum.popular);
                 break;
 
             case 1:
-                setSortMethod('postId');
+                setSortType(SortTypesEnum.newest);
                 break;
         }
     }

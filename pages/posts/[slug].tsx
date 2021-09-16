@@ -4,23 +4,25 @@ import { NextPage } from 'next';
 
 import { PostService, CommentService } from '@api/index';
 import { MainLayout } from '@components/index';
-import { IComment, IPost } from '@models/index';
+import { IComment, IPost, SortTypesEnum } from '@models/index';
 import { PostComments, SinglePost as PostSection } from '@components/pages/single-post';
 
 const SinglePost: NextPage = () => {
     const [post, setPost]         = useState<IPost>();
     const [comments, setComments] = useState<IComment[]>([]);
 
+    const [commentsSort, setCommentsSort] = useState<SortTypesEnum>(SortTypesEnum.popular);
+
     const [areCommentsLoading, setAreCommentsLoading] = useState<boolean>(true);
 
     const router = useRouter();
     const slug = router.query.slug;
 
-    const fetchComments = async (postId: string) => {
-        const response = await CommentService.getAll({ post: postId });
+    const fetchComments = useCallback(async (postId: string) => {
+        const response = await CommentService.getAll({ post: postId }, commentsSort);
 
         setComments(response.data);
-    };
+    }, [commentsSort]);
 
     useEffect(() => {
         if (typeof slug === 'string') {
@@ -40,7 +42,7 @@ const SinglePost: NextPage = () => {
                     setAreCommentsLoading(false);
                 });
         }
-    }, [slug, post]);
+    }, [slug, post, commentsSort]);
 
     const addCommentFormSubmitHandler = useCallback(async (newComment: any) => {
         if (post) {
@@ -65,6 +67,7 @@ const SinglePost: NextPage = () => {
                     <PostComments
                         areCommentsLoading={areCommentsLoading}
                         comments={comments}
+                        setSortType={setCommentsSort}
                         addCommentFormSubmitHandler={addCommentFormSubmitHandler}
                     />
                 </MainLayout>
