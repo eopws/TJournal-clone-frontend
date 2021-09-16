@@ -5,7 +5,7 @@ import { CircularProgress } from '@material-ui/core';
 import { CommentService, PostService, UserService } from '@api/index';
 import { MainLayout } from '@components/index';
 import { Header, UserComments, UserPosts } from '@components/pages/user-profile';
-import { IComment, IPost, IUser } from '@models/index';
+import { IComment, IPost, IUser, SortTypesEnum } from '@models/index';
 
 const UserProfile = () => {
     const [user, setUser]   = useState<IUser>();
@@ -13,6 +13,9 @@ const UserProfile = () => {
     const [comments, setComments] = useState<IComment[]>([]);
 
     const [ activeTab, setActiveTab ] = useState<'Posts' | 'Comments'>('Posts');
+
+    const [postsSort, setPostsSort] = useState<SortTypesEnum>(SortTypesEnum.newest);
+    const [commentsSort, setCommentsSort] = useState<SortTypesEnum>(SortTypesEnum.newest);
 
     const router = useRouter();
     const id = router.query.id;
@@ -28,31 +31,39 @@ const UserProfile = () => {
 
     useEffect(() => {
         if (typeof id === 'string') {
-            PostService.getAll({ author: id })
+            PostService.getAll({ author: id }, postsSort)
                 .then((response) => {
                     setPosts(response.data);
                 });
         }
-    }, [id]);
+    }, [id, postsSort]);
 
     useEffect(() => {
         if (typeof id === 'string') {
-            CommentService.getAll({ author: id })
+            CommentService.getAll({ author: id }, commentsSort)
                 .then((response) => {
                     setComments(response.data);
                 });
         }
-    }, [id]);
+    }, [id, commentsSort]);
 
     let PageContent;
 
     switch (activeTab) {
         case 'Posts':
-            PageContent = <UserPosts posts={posts} />
+            PageContent = <UserPosts
+                posts={posts}
+                sortType={postsSort}
+                setSortType={setPostsSort}
+            />
             break;
 
         case 'Comments':
-            PageContent = <UserComments comments={comments} />
+            PageContent = <UserComments
+                comments={comments}
+                sortType={commentsSort}
+                setSortType={setCommentsSort}
+            />
             break;
     }
 
