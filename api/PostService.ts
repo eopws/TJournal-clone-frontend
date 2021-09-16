@@ -7,7 +7,7 @@ import { SortTypesEnum } from '@models/index';
 
 export default class PostService {
     static async getAll(query?: IGetAll, sort?: SortTypesEnum): Promise<AxiosResponse<IPost[]>> {
-        let queryString = '';
+        let queryString = '?';
 
         for (let key in query) {
             queryString += key + '=' + query[key] + '&';
