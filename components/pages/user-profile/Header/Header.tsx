@@ -51,6 +51,7 @@ const Header: FC<HeaderProps> = ({ user, activeTab, setActiveTab }) => {
 
                         return (
                             <span
+                                key={tabId}
                                 className={className}
                                 onClick={() => setActiveTab(tabId)}
                             >

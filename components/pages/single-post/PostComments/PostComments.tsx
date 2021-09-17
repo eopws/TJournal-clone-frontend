@@ -84,7 +84,7 @@ const PostComments: FC<PostCommentsProps> = ({ comments, areCommentsLoading, set
 
             <div className={`${scss.comments__list} container`}>
                 {comments !== null && comments.map((comment) =>
-                    <PostComment key={+comment.createdAt} comment={comment} />
+                    <PostComment key={String(comment.createdAt)} comment={comment} />
                 )}
             </div>
         </div>
